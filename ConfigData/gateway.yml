@@ -14,7 +14,7 @@ spring:
           uri: lb://api-catalog
           predicates:
             - Path=/api/v1/catalog/**
-        - id: msmusic
+        - id: msmovie
           uri: lb://api-movie
           predicates:
             - Path=/api/v1/movies/**
