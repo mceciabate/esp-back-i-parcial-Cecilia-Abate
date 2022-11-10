@@ -1,7 +1,7 @@
 server:
   port: ${PORT:${SERVER_PORT:0}}
 
-idRandom: ${random.value}
+#idRandom: ${random.value}
 
 spring:
   application:
@@ -13,6 +13,8 @@ eureka:
     fetchRegistry: true
     serviceURL:
       defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
 
 management:
   endpoints:
