@@ -5,11 +5,11 @@ spring:
     name: api-movie
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/movie-dev
+    url: jdbc:mysql://localhost:3306/movie_dev
     username: root
     password: root
   jpa:
-    hibernate.ddl-auto: create-drop
+    hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
 
