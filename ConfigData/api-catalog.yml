@@ -10,3 +10,19 @@ eureka:
     fetchRegistry: true
     serviceURL:
       defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: api catalogo
+    version: 1.0.0
+    description: Catálogo de películas
+
