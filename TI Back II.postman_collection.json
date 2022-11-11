@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "16c809d9-1173-4b6c-bbf7-37e94cfcc7af",
+		"name": "TI Back II",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20337969"
+	},
+	"item": [
+		{
+			"name": "Listar pelis por género Catalogo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/catalog/comedia",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"catalog",
+						"comedia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar pelis por género Catalogo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/catalog/comedia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"catalog",
+								"comedia"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 12:03:39 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 3,\n        \"name\": \"Pelicula 3\",\n        \"genre\": \"Comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Guardar pelicula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{     \r\n        \"name\": \"Pelicula 5\",\r\n        \"genre\": \"Romance\",\r\n        \"urlStream\": \"www.netflix.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"save"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Guardar pelicula",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n        \"name\": \"Pelicula 5\",\r\n        \"genre\": \"Romance\",\r\n        \"urlStream\": \"www.netflix.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"save"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 12:07:34 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"name\": \"Pelicula 5\",\n    \"genre\": \"Romance\",\n    \"urlStream\": \"www.netflix.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar peliculas por género Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/romance",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"romance"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar peliculas por género Movies",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/romance",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"romance"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 12:08:38 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 5,\n        \"name\": \"Pelicula 5\",\n        \"genre\": \"Romance\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		}
+	]
+}
