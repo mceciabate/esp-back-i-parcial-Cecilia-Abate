@@ -34,6 +34,7 @@ info:
 resilience4j.circuitbreaker:
   instances:
     clientMovie:
+      allowHealthIndicatorToFail: false
       registerHealthIndicator: true
       slidingWindowSize: 10
       permittedNumberOfCallsInHalfOpenState: 3

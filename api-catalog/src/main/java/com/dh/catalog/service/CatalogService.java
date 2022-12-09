@@ -1,6 +1,7 @@
 package com.dh.catalog.service;
 
 import com.dh.catalog.client.MovieServiceClient;
+import com.dh.catalog.handler.CircuitBreakerException;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -31,8 +32,8 @@ public class CatalogService {
         }
     }
 
-    public String callMovieFallBack(CallNotPermittedException exception) {
-        return exception.getMessage();
+    public void callMovieFallBack(CallNotPermittedException exception) throws CircuitBreakerException {
+        throw new CircuitBreakerException("El circuito está abierto");
 
     }
 
