@@ -27,9 +27,7 @@ public class CatalogService {
                 throw new Exception("No hay peliculas para el genero seleccionado");
             }
 
-        else{
-            throw new Exception("Género not found");
-        }
+        return movies;
     }
 
     public void callMovieFallBack(CallNotPermittedException exception) throws CircuitBreakerException {
