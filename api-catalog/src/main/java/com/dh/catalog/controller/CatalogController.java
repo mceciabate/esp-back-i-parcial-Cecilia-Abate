@@ -14,11 +14,12 @@ import java.util.List;
 @RequestMapping("/api/v1/catalog")
 public class CatalogController {
 
-	//private final MovieServiceClient movieServiceClient;
+	private final MovieServiceClient movieServiceClient;
 	private final CatalogService catalogService;
 
-	public CatalogController(CatalogService catalogService){
+	public CatalogController(CatalogService catalogService, MovieServiceClient movieServiceClient){
 		this.catalogService = catalogService;
+		this.movieServiceClient = movieServiceClient;
 	}
 
 	@GetMapping("/{genre}")
