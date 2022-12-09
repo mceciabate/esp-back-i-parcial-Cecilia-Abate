@@ -1,6 +1,7 @@
 package com.dh.catalog.service;
 
 import com.dh.catalog.client.MovieServiceClient;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,8 @@ public class CatalogService {
         }
     }
 
-    public void callMovieFallBack(String genre, Throwable t) throws Exception {
-        System.out.println("El servicio no está disponible en este momento");
+    public String callMovieFallBack(CallNotPermittedException exception) {
+        return exception.getMessage();
 
     }
 

@@ -19,7 +19,7 @@ public class MovieController {
     }
 
     @GetMapping("/{genre}")
-    ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) {
+    ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) throws Exception {
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
     }
 
