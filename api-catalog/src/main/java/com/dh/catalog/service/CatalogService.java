@@ -17,7 +17,7 @@ public class CatalogService {
     }
 
     @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
-    @Retry(name = "clientmovie")
+    @Retry(name = "clientMovie")
     public void getMovieByGenre(String genre) throws Exception {
         List movies = movieServiceClient.getMovieByGenre(genre);
         if (movies.isEmpty()) {
