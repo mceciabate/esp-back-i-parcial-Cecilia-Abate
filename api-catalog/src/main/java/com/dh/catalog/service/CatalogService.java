@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,19 +24,22 @@ public class CatalogService {
 
     @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
     @Retry(name = "clientMovie")
-    public List<MovieServiceClient.MovieDto> getMovieByGenre(String genre) throws Exception {
+    public List<MovieServiceClient.MovieDto> getMovieByGenre(String genre) throws CircuitBreakerException {
         List response =  movieServiceClient.getMovieByGenre(genre);
         //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
         if (response.isEmpty()) {
 
-                throw new Exception("No hay peliculas para el genero seleccionado");
+                throw new CircuitBreakerException("No hay peliculas para el genero seleccionado");
             }
 
         else return response;
     }
 
-    public ResponseEntity<?> callMovieFallBack(String genre, CallNotPermittedException exception) throws CircuitBreakerException {
-        return new ResponseEntity<>("El servicio no está disponible", HttpStatus.FORBIDDEN);
+    public List<?> callMovieFallBack(String genre, CallNotPermittedException exception) {
+        List error = new ArrayList<>();
+        error.add(exception);
+        error.add(genre);
+        return error;
 
     }
 
