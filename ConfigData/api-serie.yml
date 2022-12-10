@@ -21,8 +21,8 @@ spring:
 
   data:
     mongodb:
-      username: usrseriemongo
-      password: pwdseriemongo
+#      username: usrseriemongo
+#      password: pwdseriemongo
       database: seriedevmongo
       port: 27017
       host: localhost
