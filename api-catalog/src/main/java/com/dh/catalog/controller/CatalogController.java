@@ -21,7 +21,7 @@ public class CatalogController {
 
 	@GetMapping("/{genre}")
 	ResponseEntity<ResponseEntity<List>> getGenre(@PathVariable String genre) throws Exception {
-		return ResponseEntity.ok(catalogService.getMovieByGenre(genre));
+		return ResponseEntity.ok().build();
 
 	}
 
