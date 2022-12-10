@@ -2,13 +2,9 @@ package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.service.CatalogService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/catalog")
@@ -21,10 +17,10 @@ public class CatalogController {
 		this.catalogService = catalogService;
 		this.movieServiceClient = movieServiceClient;
 	}
-
-	@GetMapping("/{genre}")
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) throws Exception {
-		return ResponseEntity.ok(catalogService.getMovieByGenre(genre));
+//@RequestMapping(value = "/test", method = RequestMethod.POST)
+	@RequestMapping(value = "/{genre}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+	ResponseEntity.BodyBuilder getGenre(@PathVariable String genre) throws Exception {
+		return (ResponseEntity.BodyBuilder) ResponseEntity.ok().body(MovieServiceClient.MovieDto.class);
 	}
 
 }
