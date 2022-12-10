@@ -19,8 +19,8 @@ public class CatalogController {
 	}
 //@RequestMapping(value = "/test", method = RequestMethod.POST)
 	@RequestMapping(value = "/{genre}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
-	ResponseEntity.BodyBuilder getGenre(@PathVariable String genre) throws Exception {
-		return (ResponseEntity.BodyBuilder) ResponseEntity.ok().body(MovieServiceClient.MovieDto.class);
+	ResponseEntity<?> getGenre(@PathVariable String genre) throws Exception {
+		return ResponseEntity.ok().body(MovieServiceClient.MovieDto.class);
 	}
 
 }
