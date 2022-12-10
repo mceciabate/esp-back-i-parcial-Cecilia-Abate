@@ -18,7 +18,7 @@ public class CatalogController {
 		this.movieServiceClient = movieServiceClient;
 	}
 //@RequestMapping(value = "/test", method = RequestMethod.POST)
-	@RequestMapping(value = "/{genre}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(value = "/{genre}", method = RequestMethod.GET)
 	ResponseEntity<?> getGenre(@PathVariable String genre) throws Exception {
 		return ResponseEntity.ok().body(MovieServiceClient.MovieDto.class);
 	}
