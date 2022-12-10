@@ -20,8 +20,8 @@ public class CatalogController {
 	}
 
 	@GetMapping("/{genre}")
-	ResponseEntity<ResponseEntity<List>> getGenre(@PathVariable String genre) throws Exception {
-		return ResponseEntity.ok().build();
+	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) throws Exception {
+		return ResponseEntity.ok().body(catalogService.getMovieByGenre(genre));
 
 	}
 
