@@ -24,5 +24,5 @@ public class SerieEntity implements Serializable {
     private Long serieID;
     private String name;
     private String genre;
-    private List<SeasonEntity> seasons = new ArrayList<>();
+    private List<SeasonEntity> seasons;
 }
