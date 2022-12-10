@@ -2,7 +2,6 @@ package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.service.CatalogService;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +20,9 @@ public class CatalogController {
 	}
 
 	@GetMapping("/{genre}")
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) {
-		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
+	ResponseEntity<ResponseEntity<List>> getGenre(@PathVariable String genre) throws Exception {
+		return ResponseEntity.ok(catalogService.getMovieByGenre(genre));
+
 	}
 
 }
