@@ -20,7 +20,7 @@ public class CatalogController {
 //@RequestMapping(value = "/test", method = RequestMethod.POST)
 	@RequestMapping(value = "/{genre}", method = RequestMethod.GET)
 	ResponseEntity<?> getGenre(@PathVariable String genre) throws Exception {
-		return ResponseEntity.ok().body(MovieServiceClient.MovieDto.class);
+		return ResponseEntity.ok().build();
 	}
 
 }
