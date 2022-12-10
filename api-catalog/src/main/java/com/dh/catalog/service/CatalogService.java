@@ -1,5 +1,5 @@
 package com.dh.catalog.service;
-
+import org.apache.log4j.Logger;
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.handler.CircuitBreakerException;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
@@ -15,6 +15,7 @@ import java.util.List;
 @Service
 public class CatalogService {
 
+    final static Logger log = Logger.getLogger(CatalogService.class);
     private final MovieServiceClient movieServiceClient;
 
     public CatalogService(MovieServiceClient movieServiceClient) {
@@ -32,7 +33,8 @@ public class CatalogService {
                 throw new CircuitBreakerException("No hay peliculas para el genero seleccionado");
             }
 
-        else return response;
+        else log.info("Consultando las peliculas del género " + genre);
+        return response;
     }
 
     public List<?> callMovieFallBack(String genre, CallNotPermittedException exception) {
