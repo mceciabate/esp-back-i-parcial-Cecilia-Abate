@@ -24,13 +24,13 @@ public class CatalogService {
     @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
     @Retry(name = "clientMovie")
     public ResponseEntity<List<MovieServiceClient.MovieDto>> getMovieByGenre(String genre) throws Exception {
-        List movies = movieServiceClient.getMovieByGenre(genre);
+        List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
         if (movies.isEmpty()) {
 
                 throw new Exception("No hay peliculas para el genero seleccionado");
             }
 
-        else return ResponseEntity.ok().build();
+        else return ResponseEntity.ok(movies);
     }
 
     public ResponseEntity<?> callMovieFallBack(String genre, CallNotPermittedException exception) throws CircuitBreakerException {
@@ -39,3 +39,8 @@ public class CatalogService {
     }
 
 }
+
+/*@GetMapping("/{genre}")
+	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) {
+		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
+	}*/

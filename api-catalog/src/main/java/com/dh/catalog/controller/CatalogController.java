@@ -6,6 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/catalog")
 public class CatalogController {
@@ -17,10 +19,10 @@ public class CatalogController {
 		this.catalogService = catalogService;
 		this.movieServiceClient = movieServiceClient;
 	}
-//@RequestMapping(value = "/test", method = RequestMethod.POST)
-	@RequestMapping(value = "/{genre}", method = RequestMethod.GET)
-	ResponseEntity<?> getGenre(@PathVariable String genre) throws Exception {
-		return ResponseEntity.ok().build();
+
+	@GetMapping("/{genre}")
+	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) {
+		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
 	}
 
 }
