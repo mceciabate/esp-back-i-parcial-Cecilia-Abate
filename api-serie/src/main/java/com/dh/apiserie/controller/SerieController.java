@@ -24,6 +24,6 @@ public class SerieController {
 
     @PostMapping("/save")
     ResponseEntity<SerieEntity> saveSerie(@RequestBody SerieEntity serie){
-        return ResponseEntity.ok().body(serieService.save(serie);
+        return ResponseEntity.ok().body(serieService.save(serie));
     }
 }

@@ -19,8 +19,9 @@ public class SerieService {
         this.serieRepository = serieRepository;
     }
 
-    public void save(SerieEntity serie){
+    public SerieEntity save(SerieEntity serie){
         serieRepository.save(serie);
+        return serie;
     }
 
     public List<SerieEntity> getByGenre(String genre){
