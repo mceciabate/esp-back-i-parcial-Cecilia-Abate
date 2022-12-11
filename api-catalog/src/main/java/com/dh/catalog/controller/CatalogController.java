@@ -3,6 +3,7 @@ package com.dh.catalog.controller;
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.client.SerieServiceClient;
 import com.dh.catalog.model.MovieEntity;
+import com.dh.catalog.model.SerieEntity;
 import com.dh.catalog.service.CatalogOfflineService;
 import com.dh.catalog.service.CatalogService;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,11 @@ public class CatalogController {
 	@GetMapping("/offline/movies/{genre}")
 	ResponseEntity<List<MovieEntity>> getMoviesGenreOffline(@PathVariable String genre){
 		return ResponseEntity.ok().body(catalogOfflineService.findMovieByGenre(genre));
+	}
+
+	@GetMapping("/offline/series/{genre}")
+	ResponseEntity<List<SerieEntity>> getSeriesOffine(@PathVariable String genre){
+		return ResponseEntity.ok().body(catalogOfflineService.findSerieByGenre(genre));
 	}
 
 }
