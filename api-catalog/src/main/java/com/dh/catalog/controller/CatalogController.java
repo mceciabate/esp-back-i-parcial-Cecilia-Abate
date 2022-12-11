@@ -1,6 +1,8 @@
 package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
+import com.dh.catalog.client.SerieServiceClient;
+import com.dh.catalog.handler.CircuitBreakerException;
 import com.dh.catalog.service.CatalogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +22,18 @@ public class CatalogController {
 		this.movieServiceClient = movieServiceClient;
 	}
 
-	@GetMapping("/{genre}")
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) throws Exception {
+	//@GetMapping("/{genre}")
+	@GetMapping("/movies/{genre}")
+
+	ResponseEntity<List<MovieServiceClient.MovieDto>> getMovieGenre(@PathVariable String genre) throws Exception {
 		return ResponseEntity.ok().body(catalogService.getMovieByGenre(genre));
 
+	}
+
+	@GetMapping("/series/genre")
+
+	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws CircuitBreakerException {
+		return ResponseEntity.ok().body(catalogService.getSerieByGenre(genre));
 	}
 
 }
