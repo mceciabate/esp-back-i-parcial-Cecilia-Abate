@@ -32,7 +32,7 @@ public class CatalogController {
 
 	@GetMapping("/series/{genre}")
 
-	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws CircuitBreakerException {
+	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws Exception {
 		return ResponseEntity.ok().body(catalogService.getSerieByGenre(genre));
 	}
 

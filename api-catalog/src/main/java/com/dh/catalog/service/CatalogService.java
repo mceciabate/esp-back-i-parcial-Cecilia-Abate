@@ -46,7 +46,7 @@ public class CatalogService {
         return error;
     }
 
-    @CircuitBreaker(name= "clientSerie", fallbackMethod = "callSerieFallback")
+    @CircuitBreaker(name= "clientSerie", fallbackMethod = "callMovieFallback")
     @Retry(name = "clientSerie")
     public List<SerieServiceClient.SerieDTO> getSerieByGenre(String genre) throws CircuitBreakerException{
         List response = serieServiceClient.getSerieByGenre(genre);
@@ -58,12 +58,12 @@ public class CatalogService {
         else log.info("Consultando las series del género " + genre);
         return response;
     }
-    public List<?> callSerieFallBack(String genre, CallNotPermittedException exception) {
-        List error = new ArrayList<>();
-        error.add(exception);
-        error.add(genre);
-        return error;
-    }
+//    public List<?> callSerieFallBack(String genre, CallNotPermittedException exception) {
+//        List error = new ArrayList<>();
+//        error.add(exception);
+//        error.add(genre);
+//        return error;
+//    }
 
 
 }
