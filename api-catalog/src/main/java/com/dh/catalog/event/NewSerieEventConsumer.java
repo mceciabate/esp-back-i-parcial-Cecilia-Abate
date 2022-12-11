@@ -54,7 +54,7 @@ public class NewSerieEventConsumer {
         public static class SerieDTO implements Serializable {
             @Serial
             private static final long serialVersionUID = 1L;
-            private Long serieId;
+            private String serieId;
             private String name;
             private String genre;
             private List<SeasonDTO> seasons;
@@ -67,7 +67,7 @@ public class NewSerieEventConsumer {
         public static class SeasonDTO implements Serializable {
             @Serial
             private static final long serialVersionUID = 1L;
-            private Long seasonId;
+            private String seasonId;
             private Integer seasonNumber;
             private List<ChapterDTO> chapters;
         }
@@ -79,7 +79,7 @@ public class NewSerieEventConsumer {
         public static class ChapterDTO implements Serializable {
             @Serial
             private static final long serialVersionUID = 1L;
-            private Long chapterId;
+            private String chapterId;
             private String name;
             private Integer chapterNumber;
             private String urlStream;

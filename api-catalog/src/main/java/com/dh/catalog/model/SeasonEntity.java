@@ -22,7 +22,7 @@ public class SeasonEntity implements Serializable {
     private final static long serialVersionUID = 1L;
 
     @Id
-    private Long seasonID;
+    private String seasonID;
     private Integer seasonNumber;
     private List<ChapterEntity> chapters;
 }

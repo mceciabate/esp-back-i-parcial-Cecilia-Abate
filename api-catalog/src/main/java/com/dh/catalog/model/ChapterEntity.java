@@ -18,7 +18,7 @@ public class ChapterEntity {
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
-    private Long chapterID;
+    private String chapterID;
     private String name;
     private Integer chapterNumber;
     private String urlStream;
