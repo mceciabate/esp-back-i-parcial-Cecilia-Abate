@@ -17,7 +17,11 @@ public class RabbitMQConfig {
 
     public static final String TOPIC_NEW_MOVIE = "com.dh.movie.newMovie";
 
+    public static final String TOPIC_NEW_SERIE = "com.dh.movie.newSerie";
+
     public static final String QUEUE_NEW_MOVIE = "newMovieQueue";
+
+    public static final String QUEUE_NEW_SERIE = "newSerieQueue";
 
     @Bean
     public TopicExchange appExchange() {
@@ -30,8 +34,18 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue newSerieQueue() {
+        return new Queue(QUEUE_NEW_SERIE);
+    }
+
+    @Bean
     public Binding declareBindingSpecificNewMovie() {
         return BindingBuilder.bind(newMovieQueue()).to(appExchange()).with(TOPIC_NEW_MOVIE);
+    }
+
+    @Bean
+    public Binding declareBindingSpecificNewSerie() {
+        return BindingBuilder.bind(newSerieQueue()).to(appExchange()).with(TOPIC_NEW_SERIE);
     }
 
     @Bean
