@@ -2,6 +2,8 @@ package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.client.SerieServiceClient;
+import com.dh.catalog.model.MovieEntity;
+import com.dh.catalog.service.CatalogOfflineService;
 import com.dh.catalog.service.CatalogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,13 @@ public class CatalogController {
 	private final SerieServiceClient serieServiceClient;
 	private final CatalogService catalogService;
 
-	public CatalogController(CatalogService catalogService, MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient){
+	private final CatalogOfflineService catalogOfflineService;
+
+	public CatalogController(CatalogService catalogService, MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient, CatalogOfflineService catalogOfflineService){
 		this.catalogService = catalogService;
 		this.movieServiceClient = movieServiceClient;
 		this.serieServiceClient = serieServiceClient;
+		this.catalogOfflineService = catalogOfflineService;
 	}
 
 	//@GetMapping("/{genre}")
@@ -35,6 +40,11 @@ public class CatalogController {
 
 	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws Exception {
 		return ResponseEntity.ok().body(serieServiceClient.getSerieByGenre(genre));
+	}
+
+	@GetMapping("/offline/movies/{genre}")
+	ResponseEntity<List<MovieEntity>> getMoviesGenreOffline(@PathVariable String genre){
+		return ResponseEntity.ok().body(catalogOfflineService.movieGenreOffline(genre));
 	}
 
 }
