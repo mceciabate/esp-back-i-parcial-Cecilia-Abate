@@ -13,7 +13,14 @@ spring:
     username: guest
     password: guest
     host: localhost
-    port: 5672
+    port: 15672
+  data:
+    mongodb:
+#      username: usrseriemongo
+#      password: pwdseriemongo
+    database: catalogdevmongo
+    port: 27017
+    host: localhost
 
 eureka:
   client:

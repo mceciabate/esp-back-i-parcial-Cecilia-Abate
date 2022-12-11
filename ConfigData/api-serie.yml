@@ -13,7 +13,7 @@ spring:
     username: guest
     password: guest
     host: localhost
-    port: 5672
+    port: 15672
 #  datasource:
 #    driverClassName: com.mysql.jdbc.Driver
 #    url: jdbc:mysql://localhost:3306/movie_dev
