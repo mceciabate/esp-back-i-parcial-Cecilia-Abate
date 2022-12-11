@@ -44,7 +44,7 @@ public class CatalogController {
 
 	@GetMapping("/offline/movies/{genre}")
 	ResponseEntity<List<MovieEntity>> getMoviesGenreOffline(@PathVariable String genre){
-		return ResponseEntity.ok().body(catalogOfflineService.movieGenreOffline(genre));
+		return ResponseEntity.ok().body(catalogOfflineService.findMovieByGenre(genre));
 	}
 
 }

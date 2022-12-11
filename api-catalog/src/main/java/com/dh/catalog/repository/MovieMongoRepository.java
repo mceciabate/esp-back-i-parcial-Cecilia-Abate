@@ -11,4 +11,5 @@ public interface MovieMongoRepository extends MongoRepository<MovieEntity, Long>
 
 
     List<MovieEntity> findByGenre(String genre);
+
 }
