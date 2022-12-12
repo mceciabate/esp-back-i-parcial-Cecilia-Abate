@@ -1,13 +1,16 @@
 package com.dh.catalog.service;
 import com.dh.catalog.client.SerieServiceClient;
+import com.dh.catalog.handler.ApiException;
 import org.apache.log4j.Logger;
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.handler.CircuitBreakerException;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,40 +28,93 @@ public class CatalogService {
         this.serieServiceClient = serieServiceClient;
     }
 
-
     @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
     @Retry(name = "clientMovie")
-    public List<MovieServiceClient.MovieDto> getMovieByGenre(String genre) throws CircuitBreakerException {
+    public List<?> getMovieByGenre(String genre) {
+        ApiException error;
         List response =  movieServiceClient.getMovieByGenre(genre);
         //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
         if (response.isEmpty()) {
-
-                throw new CircuitBreakerException("No hay peliculas para el genero seleccionado");
-            }
+            error = new ApiException("No hay peliculas para el género seleccionado", HttpStatus.NOT_FOUND, ZonedDateTime.now());
+            response.add(error);
+        }
 
         else log.info("Consultando las peliculas del género " + genre);
         return response;
     }
 
-    public List<?> callMovieFallBack(String genre, CallNotPermittedException exception) {
-        List error = new ArrayList<>();
-        error.add(exception);
-        error.add(genre);
-        return error;
-    }
-
-    @CircuitBreaker(name= "clientSerie")
-    @Retry(name = "clientSerie")
-    public List<SerieServiceClient.SerieDTO> getSerieByGenre(String genre) throws CircuitBreakerException {
-        List response = serieServiceClient.getSerieByGenre(genre);
+    public List<?> callMovieFallBack(String genre, Throwable t) {
+        ApiException error;
+        List response =  movieServiceClient.getMovieByGenre(genre);
+        //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
         if (response.isEmpty()) {
-
-            throw new CircuitBreakerException("No hay series para el genero seleccionado");
+            error = new ApiException("No hay peliculas para el género seleccionado", HttpStatus.NOT_FOUND, ZonedDateTime.now());
+            response.add(error);
         }
 
-        else log.info("Consultando las series del género " + genre);
+        else log.info("Retry de Movies");
         return response;
     }
+
+
+//    @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
+//    @Retry(name = "clientMovie")
+//    public List<MovieServiceClient.MovieDto> getMovieByGenre(String genre) throws CircuitBreakerException {
+//        List response =  movieServiceClient.getMovieByGenre(genre);
+//        //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
+//        if (response.isEmpty()) {
+//
+//                throw new CircuitBreakerException("No hay peliculas para el genero seleccionado");
+//            }
+//
+//        else log.info("Consultando las peliculas del género " + genre);
+//        return response;
+//    }
+//
+//    public List<?> callMovieFallBack(String genre, CallNotPermittedException exception) {
+//        List error = new ArrayList<>();
+//        error.add(exception);
+//        error.add(genre);
+//        return error;
+//    }
+
+    @CircuitBreaker(name= "clientSerie", fallbackMethod = "callSerieFallBack")
+    @Retry(name = "clientSerie")
+    public List<?> getSerieByGenre(String genre) {
+        ApiException error;
+        List response = serieServiceClient.getSerieByGenre(genre);
+        if (response.isEmpty()) {
+            error = new ApiException("No hay series para el género seleccionado", HttpStatus.NOT_FOUND, ZonedDateTime.now());
+            response.add(error);
+        }
+        log.info("Consultando las series del género " + genre);
+        return response;
+    }
+    public List<?> callSerieFallBack(String genre, Throwable t) {
+        ApiException error;
+        List response = serieServiceClient.getSerieByGenre(genre);
+        if (response.isEmpty()) {
+            error = new ApiException("No hay series para el genero seleccionado", HttpStatus.NOT_FOUND, ZonedDateTime.now());
+            response.add(error);
+        }
+        log.info("Retry de Series");
+        return response;
+    }
+
+
+
+//    @CircuitBreaker(name= "clientSerie", fallbackMethod = "callSerieFallBack")
+//    @Retry(name = "clientSerie")
+//    public List<SerieServiceClient.SerieDTO> getSerieByGenre(String genre) throws CircuitBreakerException {
+//        List response = serieServiceClient.getSerieByGenre(genre);
+//        if (response.isEmpty()) {
+//
+//            throw new CircuitBreakerException("No hay series para el genero seleccionado");
+//        }
+//
+//        else log.info("Consultando las series del género " + genre);
+//        return response;
+//    }
 //    public List<Optional> callSerieFallBack(String genre, CallNotPermittedException exception) {
 //        List error = new ArrayList<>();
 //        error.add(exception);

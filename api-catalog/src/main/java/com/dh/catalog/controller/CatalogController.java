@@ -31,9 +31,14 @@ public class CatalogController {
 	}
 
 	//@GetMapping("/{genre}")
+//	@GetMapping("/movies/{genre}")
+//
+//	ResponseEntity<List<MovieServiceClient.MovieDto>> getMovieGenre(@PathVariable String genre) throws Exception {
+//		return ResponseEntity.ok().body(catalogService.getMovieByGenre(genre));
+//
+//	}
 	@GetMapping("/movies/{genre}")
-
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getMovieGenre(@PathVariable String genre) throws Exception {
+	ResponseEntity<List<?>> getMovieGenre(@PathVariable String genre) throws Exception {
 		return ResponseEntity.ok().body(catalogService.getMovieByGenre(genre));
 
 	}
@@ -46,8 +51,7 @@ public class CatalogController {
 
 
 	@GetMapping("/series/{genre}")
-
-	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws Exception {
+	ResponseEntity<List<?>> getSerieGenre(@PathVariable String genre) throws Exception {
 		return ResponseEntity.ok().body(catalogService.getSerieByGenre(genre));
 	}
 
