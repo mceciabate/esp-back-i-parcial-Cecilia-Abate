@@ -30,6 +30,7 @@ public class NewSerieEventConsumer {
     public void execute(NewSerieEventConsumer.Data data){
         SerieEntity serieNew = new SerieEntity();
         BeanUtils.copyProperties(data.getSerie(), serieNew);
+
         //movieMongoRepository.deleteById(data.getMovie().getMovieId());
         serieMongoRepository.save(serieNew);
 
@@ -57,32 +58,34 @@ public class NewSerieEventConsumer {
             private String serieId;
             private String name;
             private String genre;
-            private List<SeasonDTO> seasons;
-        }
+            private List<Data.SerieDTO.SeasonDTO> seasons;
 
-        @Getter
-        @Setter
-        @NoArgsConstructor
-        @AllArgsConstructor
-        public static class SeasonDTO implements Serializable {
-            @Serial
-            private static final long serialVersionUID = 1L;
-            private String seasonId;
-            private Integer seasonNumber;
-            private List<ChapterDTO> chapters;
-        }
 
-        @Getter
-        @Setter
-        @NoArgsConstructor
-        @AllArgsConstructor
-        public static class ChapterDTO implements Serializable {
-            @Serial
-            private static final long serialVersionUID = 1L;
-            private String chapterId;
-            private String name;
-            private Integer chapterNumber;
-            private String urlStream;
+            @Getter
+            @Setter
+            @NoArgsConstructor
+            @AllArgsConstructor
+            public static class SeasonDTO implements Serializable {
+                @Serial
+                private static final long serialVersionUID = 1L;
+                private String seasonId;
+                private Integer seasonNumber;
+                private List<Data.SerieDTO.SeasonDTO.ChapterDTO> chapters;
+
+
+                @Getter
+                @Setter
+                @NoArgsConstructor
+                @AllArgsConstructor
+                public static class ChapterDTO implements Serializable {
+                    @Serial
+                    private static final long serialVersionUID = 1L;
+                    private String chapterId;
+                    private String name;
+                    private Integer chapterNumber;
+                    private String urlStream;
+                }
+            }
         }
 
 
