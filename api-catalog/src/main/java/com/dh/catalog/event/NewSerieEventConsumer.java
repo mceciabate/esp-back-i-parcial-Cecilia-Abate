@@ -30,8 +30,6 @@ public class NewSerieEventConsumer {
     public void execute(NewSerieEventConsumer.Data data){
         SerieEntity serieNew = new SerieEntity();
         BeanUtils.copyProperties(data.getSerie(), serieNew);
-
-        //movieMongoRepository.deleteById(data.getMovie().getMovieId());
         serieMongoRepository.save(serieNew);
 
 

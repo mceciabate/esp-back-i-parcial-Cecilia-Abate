@@ -27,7 +27,6 @@ public class NewMovieEventConsumer {
         public void execute(NewMovieEventConsumer.Data data){
             MovieEntity movieNew = new MovieEntity();
             BeanUtils.copyProperties(data.getMovie(), movieNew);
-            //movieMongoRepository.deleteById(data.getMovie().getMovieId());
             movieMongoRepository.save(movieNew);
 
 

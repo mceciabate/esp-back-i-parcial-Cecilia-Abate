@@ -3,17 +3,13 @@ import com.dh.catalog.client.SerieServiceClient;
 import com.dh.catalog.handler.ApiException;
 import org.apache.log4j.Logger;
 import com.dh.catalog.client.MovieServiceClient;
-import com.dh.catalog.handler.CircuitBreakerException;
-import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CatalogService {
@@ -28,12 +24,14 @@ public class CatalogService {
         this.serieServiceClient = serieServiceClient;
     }
 
+    //APLICO EL PATRON CIRCUIT BREAKER PARA LOS MÉTODOS QUE SON CONSUMIDOS DE FORMA ONLINE A TRAVÉS DEL FEINGCLIENT
+    //AMBOS MÉTODOS TIENEN ESTABLECIDO UN RETRY PARA CUANDO LA CONEXIÓN INTENTE SER REESTABLECIDA CON EL MS QUE ES CONSUMIDO
+    //LAS REGLAS ESTABLECIDAS PARA EL COMPORTAMIENTO DE RESILENCE4J SE ENCUENTRAN ESTABLECIDAS EN API-CATALOG.YML PARA CADA UNA DE LAS INSTANCIAS
     @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
     @Retry(name = "clientMovie")
     public List<?> getMovieByGenre(String genre) {
         ApiException error;
         List response =  movieServiceClient.getMovieByGenre(genre);
-        //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
         if (response.isEmpty()) {
             error = new ApiException("No hay peliculas para el género seleccionado", HttpStatus.NOT_FOUND, ZonedDateTime.now());
             response.add(error);
@@ -46,7 +44,6 @@ public class CatalogService {
     public List<?> callMovieFallBack(String genre, Throwable t) {
         ApiException error;
         List response =  movieServiceClient.getMovieByGenre(genre);
-        //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
         if (response.isEmpty()) {
             error = new ApiException("No hay peliculas para el género seleccionado", HttpStatus.NOT_FOUND, ZonedDateTime.now());
             response.add(error);
@@ -57,26 +54,7 @@ public class CatalogService {
     }
 
 
-//    @CircuitBreaker(name = "clientMovie", fallbackMethod = "callMovieFallBack")
-//    @Retry(name = "clientMovie")
-//    public List<MovieServiceClient.MovieDto> getMovieByGenre(String genre) throws CircuitBreakerException {
-//        List response =  movieServiceClient.getMovieByGenre(genre);
-//        //List<MovieServiceClient.MovieDto> movies = movieServiceClient.getMovieByGenre(genre);
-//        if (response.isEmpty()) {
-//
-//                throw new CircuitBreakerException("No hay peliculas para el genero seleccionado");
-//            }
-//
-//        else log.info("Consultando las peliculas del género " + genre);
-//        return response;
-//    }
-//
-//    public List<?> callMovieFallBack(String genre, CallNotPermittedException exception) {
-//        List error = new ArrayList<>();
-//        error.add(exception);
-//        error.add(genre);
-//        return error;
-//    }
+
 
     @CircuitBreaker(name= "clientSerie", fallbackMethod = "callSerieFallBack")
     @Retry(name = "clientSerie")
@@ -102,25 +80,6 @@ public class CatalogService {
     }
 
 
-
-//    @CircuitBreaker(name= "clientSerie", fallbackMethod = "callSerieFallBack")
-//    @Retry(name = "clientSerie")
-//    public List<SerieServiceClient.SerieDTO> getSerieByGenre(String genre) throws CircuitBreakerException {
-//        List response = serieServiceClient.getSerieByGenre(genre);
-//        if (response.isEmpty()) {
-//
-//            throw new CircuitBreakerException("No hay series para el genero seleccionado");
-//        }
-//
-//        else log.info("Consultando las series del género " + genre);
-//        return response;
-//    }
-//    public List<Optional> callSerieFallBack(String genre, CallNotPermittedException exception) {
-//        List error = new ArrayList<>();
-//        error.add(exception);
-//        error.add(genre);
-//        return error;
-//    }
 
 
 }
