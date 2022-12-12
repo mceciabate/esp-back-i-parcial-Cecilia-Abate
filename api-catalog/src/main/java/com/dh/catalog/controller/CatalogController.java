@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/catalog")
@@ -37,10 +38,17 @@ public class CatalogController {
 
 	}
 
+//	@GetMapping("/series/{genre}")
+//
+//	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws Exception {
+//		return ResponseEntity.ok().body(serieServiceClient.getSerieByGenre(genre));
+//	}
+
+
 	@GetMapping("/series/{genre}")
 
 	ResponseEntity<List<SerieServiceClient.SerieDTO>> getSerieGenre(@PathVariable String genre) throws Exception {
-		return ResponseEntity.ok().body(serieServiceClient.getSerieByGenre(genre));
+		return ResponseEntity.ok().body(catalogService.getSerieByGenre(genre));
 	}
 
 	@GetMapping("/offline/movies/{genre}")

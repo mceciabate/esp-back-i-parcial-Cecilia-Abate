@@ -1,4 +1,5 @@
 package com.dh.catalog.client;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,25 +17,27 @@ public interface SerieServiceClient {
 
     @Getter
     @Setter
-
+    @AllArgsConstructor
     class SerieDTO{
-       private Long id;
+       private Long serieID;
        private String name;
        private String genre;
        private List<SeasonDTO> seasons;
     }
     @Getter
     @Setter
+    @AllArgsConstructor
     static class SeasonDTO{
-      private Long id;
+      private Long seasonID;
       private Integer seasonNumber;
       private List<ChapterDTO> chapters;
     }
 
     @Getter
     @Setter
+    @AllArgsConstructor
     static class ChapterDTO{
-        private Long id;
+        private Long chapterID;
         private String name;
         private Integer chapterNumber;
         private String urlStream;

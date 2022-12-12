@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CatalogService {
@@ -46,19 +47,19 @@ public class CatalogService {
         return error;
     }
 
-//    @CircuitBreaker(name= "clientSerie", fallbackMethod = "callMovieFallback")
-//    @Retry(name = "clientSerie")
-//    public List<SerieServiceClient.SerieDTO> getSerieByGenre(String genre) throws CircuitBreakerException{
-//        List response = serieServiceClient.getSerieByGenre(genre);
-//        if (response.isEmpty()) {
-//
-//            throw new CircuitBreakerException("No hay series para el genero seleccionado");
-//        }
-//
-//        else log.info("Consultando las series del género " + genre);
-//        return response;
-//    }
-//    public List<?> callSerieFallBack(String genre, CallNotPermittedException exception) {
+    @CircuitBreaker(name= "clientSerie")
+    @Retry(name = "clientSerie")
+    public List<SerieServiceClient.SerieDTO> getSerieByGenre(String genre) throws CircuitBreakerException {
+        List response = serieServiceClient.getSerieByGenre(genre);
+        if (response.isEmpty()) {
+
+            throw new CircuitBreakerException("No hay series para el genero seleccionado");
+        }
+
+        else log.info("Consultando las series del género " + genre);
+        return response;
+    }
+//    public List<Optional> callSerieFallBack(String genre, CallNotPermittedException exception) {
 //        List error = new ArrayList<>();
 //        error.add(exception);
 //        error.add(genre);
@@ -67,8 +68,3 @@ public class CatalogService {
 
 
 }
-
-/*@GetMapping("/{genre}")
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) {
-		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
-	}*/
