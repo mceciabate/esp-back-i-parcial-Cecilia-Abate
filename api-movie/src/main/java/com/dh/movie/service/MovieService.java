@@ -7,6 +7,7 @@ import com.dh.movie.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -20,6 +21,14 @@ public class MovieService {
         this.newMovieEventProducer = newMovieEventProducer;
     }
 
+    public List<Movie> getAllMovies(){
+        return movieRepository.findAll();
+    }
+
+    public Movie getMovieById(Long id) {
+        return movieRepository.findById(id).orElse(null);
+    }
+
     public List<Movie> findByGenre(String genre) {
         return movieRepository.findByGenre(genre);
     }
@@ -30,6 +39,16 @@ public class MovieService {
         return movie;
 
     }
+    public void deleteMovie(Long id){
+        movieRepository.deleteById(id);
+    }
+
+    public void updateMovie(Movie movie){
+        if(movieRepository.existsById(movie.getId())){
+            movieRepository.save(movie);
+        }
+    }
+
 
 
 }
