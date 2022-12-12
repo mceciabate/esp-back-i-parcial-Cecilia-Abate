@@ -1,0 +1,938 @@
+{
+	"info": {
+		"_postman_id": "16c809d9-1173-4b6c-bbf7-37e94cfcc7af",
+		"name": "TI Back II",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20337969"
+	},
+	"item": [
+		{
+			"name": "Listar pelis por género Catalogo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/catalog/movies/infantil",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"catalog",
+						"movies",
+						"infantil"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar pelis por género Catalogo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/catalog/comedia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"catalog",
+								"comedia"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 12:03:39 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 3,\n        \"name\": \"Pelicula 3\",\n        \"genre\": \"Comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Guardar pelicula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{     \r\n        \"name\": \"Pelicula 29\",\r\n        \"genre\": \"comedia\",\r\n        \"urlStream\": \"www.netflix.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"save"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Guardar pelicula",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n        \"name\": \"Pelicula 5\",\r\n        \"genre\": \"Romance\",\r\n        \"urlStream\": \"www.netflix.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"save"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 12:07:34 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"name\": \"Pelicula 5\",\n    \"genre\": \"Romance\",\n    \"urlStream\": \"www.netflix.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar peliculas por género Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/romance",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"romance"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar peliculas por género Movies",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/romance",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"romance"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 12:08:38 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 5,\n        \"name\": \"Pelicula 5\",\n        \"genre\": \"Romance\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "post serie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"serieID\": 20,\r\n  \"name\": \"la serie\",\r\n  \"genre\": \"terror\",\r\n  \"seasons\" :[{\r\n    \"seasonID\":9,\r\n\t\"seasonNumber\": 1,\r\n\t\"chapters\" : [{\r\n\t\t\"chapterID\": 5,\r\n\t\t\"name\": \"el episodio\",\r\n\t\t\"chapterNumber\": 1,\r\n\t\t\"urlStream\": \"netflix.com\" \r\n                }]\t\r\n            }] \t \r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/series/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"series",
+						"save"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "post serie",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"serieID\": 3,\r\n  \"name\": \"la serie\",\r\n  \"genre\": \"comdia\",\r\n  \"seasons\" :[{\r\n    \"seasonID\":1,\r\n\t\"seasonNumber\": 1,\r\n\t\"chapters\" : [{\r\n\t\t\"chaperID\": 1,\r\n\t\t\"name\": \"el episodio\",\r\n\t\t\"chapterNumber\": 1,\r\n\t\t\"urlStream\": \"netflix.com\" \r\n                }]\t\r\n            }] \t \r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/series/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"series",
+								"save"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 10 Dec 2022 22:02:16 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"serieID\": 3,\n    \"name\": \"la serie\",\n    \"genre\": \"comdia\",\n    \"seasons\": [\n        {\n            \"seasonID\": 1,\n            \"seasonNumber\": 1,\n            \"chapters\": [\n                {\n                    \"chapterID\": null,\n                    \"name\": \"el episodio\",\n                    \"chapterNumber\": 1,\n                    \"urlStream\": \"netflix.com\"\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar series por género",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/series/drama",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"series",
+						"drama"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar series por género",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/series/drama",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"series",
+								"drama"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 15:34:49 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"serieID\": 1,\n        \"name\": \"la serie\",\n        \"genre\": \"drama\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 2,\n        \"name\": \"otra serie 2\",\n        \"genre\": \"drama\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "listar series offline",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/catalog/offline/series/terror",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"catalog",
+						"offline",
+						"series",
+						"terror"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "listar series offline",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/catalog/offline/series/terror",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"catalog",
+								"offline",
+								"series",
+								"terror"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:53:31 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"serieID\": \"639699d347ba9c291a9f5fac\",\n        \"name\": \"la serie\",\n        \"genre\": \"terror\",\n        \"seasons\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Listar Todas las peliculas (desde Movies)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar Todas las peliculas (desde Movies)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:53:43 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Pelicula 1\",\n        \"genre\": \"Terror\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Pelicula 2\",\n        \"genre\": \"Terror\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Pelicula 3\",\n        \"genre\": \"Comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Pelicula 4\",\n        \"genre\": \"Ficcion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Pelicula 5\",\n        \"genre\": \"Romance\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Pelicula 5\",\n        \"genre\": \"Romance\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 8,\n        \"name\": \"Pelicula 8\",\n        \"genre\": \"Romance\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 9,\n        \"name\": \"Pelicula 9\",\n        \"genre\": \"Documental\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 10,\n        \"name\": \"Pelicula 10\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 11,\n        \"name\": \"Pelicula 11\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 12,\n        \"name\": \"Pelicula 12\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 13,\n        \"name\": \"Pelicula 13\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 14,\n        \"name\": \"Pelicula 14\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 15,\n        \"name\": \"Pelicula 15\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 16,\n        \"name\": \"Pelicula 17\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 17,\n        \"name\": \"Pelicula 16\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 18,\n        \"name\": \"Pelicula 18\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 19,\n        \"name\": \"Pelicula 19\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 20,\n        \"name\": \"Pelicula 20\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 21,\n        \"name\": \"Pelicula 21\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 22,\n        \"name\": \"Pelicula 22\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 23,\n        \"name\": \"Pelicula 23\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 24,\n        \"name\": \"Pelicula 24\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 25,\n        \"name\": \"Pelicula 25\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 26,\n        \"name\": \"Pelicula 26\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 27,\n        \"name\": \"Pelicula 27\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 28,\n        \"name\": \"Pelicula 27\",\n        \"genre\": \"Accion\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 29,\n        \"name\": \"Pelicula 27\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 30,\n        \"name\": \"Pelicula 28\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 31,\n        \"name\": \"Pelicula 29\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 32,\n        \"name\": \"Pelicula 29\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Delete pelicula por Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete pelicula por Id",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/30",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"30"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:53:57 GMT"
+						},
+						{
+							"key": "content-length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Buscar Peli por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/find/9",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"find",
+						"9"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Buscar Peli por Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/find/14",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"find",
+								"14"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:54:07 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 14,\n    \"name\": \"Pelicula 14\",\n    \"genre\": \"Accion\",\n    \"urlStream\": \"www.netflix.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar Pelis por género (Pelis)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/movies/infantil",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"infantil"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar Pelis por género (Pelis)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/movies/infantil",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"infantil"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:54:18 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 10,\n        \"name\": \"Pelicula 10\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 11,\n        \"name\": \"Pelicula 11\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 12,\n        \"name\": \"Pelicula 12\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"id\": 13,\n        \"name\": \"Pelicula 13\",\n        \"genre\": \"Infantil\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Update pelis",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 9,\r\n        \"name\": \"Pelicula 9\",\r\n        \"genre\": \"Documental\",\r\n        \"urlStream\": \"www.netflix.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update pelis",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": 21,\r\n        \"name\": \"Pelicula 9\",\r\n        \"genre\": \"Documental\",\r\n        \"urlStream\": \"www.netflix.com\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:54:38 GMT"
+						},
+						{
+							"key": "content-length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Listar series online catalog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/catalog/series/comedia",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"catalog",
+						"series",
+						"comedia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar series online catalog",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/catalog/series/comedia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"catalog",
+								"series",
+								"comedia"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 15:35:49 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"serieID\": 3,\n        \"name\": \"otra serie 3\",\n        \"genre\": \"comedia\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 4,\n        \"name\": \"otra serie 4\",\n        \"genre\": \"comedia\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Listar pelis offline",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/catalog/offline/movies/comedia",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"catalog",
+						"offline",
+						"movies",
+						"comedia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar pelis offline",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/catalog/offline/movies/comedia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"catalog",
+								"offline",
+								"movies",
+								"comedia"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:55:00 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"movieId\": \"63964679b4e52e12ec0d47f5\",\n        \"name\": \"Pelicula 27\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"movieId\": \"63966a0088464d4b99c90ca3\",\n        \"name\": \"Pelicula 28\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"movieId\": \"6396878a5f7ef12bf37a804c\",\n        \"name\": \"Pelicula 29\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    },\n    {\n        \"movieId\": \"639738fd42fada451c45776e\",\n        \"name\": \"Pelicula 29\",\n        \"genre\": \"comedia\",\n        \"urlStream\": \"www.netflix.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Listar series",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/series",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"series"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar series",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/series",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"series"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 15:36:29 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"serieID\": 1,\n        \"name\": \"la serie\",\n        \"genre\": \"drama\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 2,\n        \"name\": \"otra serie 2\",\n        \"genre\": \"drama\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 3,\n        \"name\": \"otra serie 3\",\n        \"genre\": \"comedia\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 4,\n        \"name\": \"otra serie 4\",\n        \"genre\": \"comedia\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 5,\n        \"name\": \"otra serie 5\",\n        \"genre\": \"infantil\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 6,\n        \"name\": \"otra serie 6\",\n        \"genre\": \"infantil\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"serieID\": 7,\n        \"name\": \"otra serie 7\",\n        \"genre\": \"accion\",\n        \"seasons\": [\n            {\n                \"seasonID\": 1,\n                \"seasonNumber\": 1,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            },\n            {\n                \"seasonID\": 2,\n                \"seasonNumber\": 2,\n                \"chapters\": [\n                    {\n                        \"chapterID\": 1,\n                        \"name\": \"el episodio 1\",\n                        \"chapterNumber\": 1,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 2,\n                        \"name\": \"el episodio 2\",\n                        \"chapterNumber\": 2,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    },\n                    {\n                        \"chapterID\": 3,\n                        \"name\": \"el episodio 3\",\n                        \"chapterNumber\": 3,\n                        \"urlStream\": \"www.crunchyroll.com\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Borrar series por ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/series/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"series",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
