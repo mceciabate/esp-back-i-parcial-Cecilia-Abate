@@ -18,12 +18,27 @@ public class SerieController {
     }
 
     @GetMapping("/{genre}")
-    ResponseEntity<List<SerieEntity>> getSeriesByGenre(@PathVariable String genre){
+    public ResponseEntity<List<SerieEntity>> getSeriesByGenre(@PathVariable String genre){
         return ResponseEntity.ok().body(serieService.getByGenre(genre));
     }
 
     @PostMapping("/save")
-    ResponseEntity<SerieEntity> saveSerie(@RequestBody SerieEntity serie){
+    public ResponseEntity<SerieEntity> saveSerie(@RequestBody SerieEntity serie){
         return ResponseEntity.ok().body(serieService.save(serie));
     }
+
+    @GetMapping()
+    public ResponseEntity<List<SerieEntity>> getAll(){
+        return ResponseEntity.ok(serieService.getAllSeries());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteSerie(@PathVariable Long id){
+        serieService.deleteSerie(id);
+        return ResponseEntity.ok().build();
+    }
+
+
+
+
 }

@@ -4,6 +4,7 @@ import com.dh.catalog.model.MovieEntity;
 import com.dh.catalog.model.SerieEntity;
 import com.dh.catalog.repository.MovieMongoRepository;
 import com.dh.catalog.repository.SerieMongoRepository;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.List;
 
 @Service
 public class CatalogOfflineService {
+
+    final static Logger log = Logger.getLogger(CatalogOfflineService.class);
 
     private final MovieMongoRepository movieMongoRepository;
 
@@ -30,6 +33,7 @@ public class CatalogOfflineService {
                 genreMovies.add(movie);
             }
         }
+        log.info("Consultando la peliculas del género " + genre + "en la base de datos catálogo");
         return genreMovies;
     }
 
@@ -41,6 +45,7 @@ public class CatalogOfflineService {
                 genreSeries.add(serie);
             }
         }
+        log.info("Consultando las series del géero " + genre + "en la base de datos de catálogo");
         return genreSeries;
 
 
